@@ -1,3 +1,7 @@
+import time
+
+from selenium.webdriver.common.by import By
+
 from pages.login_page import LoginPage
 import env
 
@@ -13,3 +17,15 @@ def test_successful_login(login_driver):
     # assertion
     expected_url = "https://www.hudl.com/home"
     lp.assert_url(login_driver, expected_url)
+
+
+def test_incorrect_email(login_driver):
+    lp = LoginPage(login_driver)
+
+    # actions
+    lp.enter_login_email("test")
+    lp.enter_login_password(env.hudl_password)
+    lp.click_continue_button()
+
+    # assertion
+    lp.assert_incorrect_login_message("We don't recognize that email and/or password")

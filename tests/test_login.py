@@ -41,3 +41,15 @@ def test_incorrect_password(login_driver):
 
     # assertion
     lp.assert_incorrect_login_message("We don't recognize that email and/or password")
+
+
+def test_empty_email_and_password(login_driver):
+    lp = LoginPage(login_driver)
+
+    # actions
+    lp.enter_login_email("")
+    lp.enter_login_password("")
+    lp.click_continue_button()
+
+    # assertion
+    lp.assert_incorrect_login_message("Please fill in all of the required fields")

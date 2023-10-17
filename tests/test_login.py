@@ -11,3 +11,5 @@ def test_successful_login(login_driver):
     lp.click_continue_button()
 
     # assertion
+    expected_url = "https://www.hudl.com/home"
+    lp.assert_url(login_driver, expected_url)

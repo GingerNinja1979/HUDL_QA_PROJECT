@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.common.keys import Keys
 
 from .base_page import BasePage
 
@@ -14,6 +15,10 @@ class LoginPage(BasePage):
     PASSWORD_INPUT = (By.ID, "password")
     CONTINUE_BUTTON = (By.ID, "logIn")
     ERROR_LOCATOR = (By.XPATH, '//p[@data-qa-id="undefined-text"]')
+
+    def __init__(self, driver):
+        super().__init__(driver)
+        self.password_field = None
 
     def enter_login_email(self, email):
         self.wait_for(self.EMAIL_INPUT).send_keys(email)
@@ -40,3 +45,6 @@ class LoginPage(BasePage):
             assert element.text == value
         except:
             assert False, f"Error message element not found: {self.ERROR_LOCATOR}"
+
+    def login_with_enter_key(self):
+        self.wait_for(self.CONTINUE_BUTTON).send_keys(Keys.RETURN)

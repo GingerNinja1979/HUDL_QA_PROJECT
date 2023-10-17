@@ -34,8 +34,9 @@ class LoginPage(BasePage):
             element = WebDriverWait(self.driver, 10).until(
                 ec.visibility_of_element_located(self.ERROR_LOCATOR)
             )
-            assert element.is_displayed(), f"Error message element is not displayed: {value}"
+            assert (
+                element.is_displayed()
+            ), f"Error message element is not displayed: {value}"
             assert element.text == value
         except:
             assert False, f"Error message element not found: {self.ERROR_LOCATOR}"
-

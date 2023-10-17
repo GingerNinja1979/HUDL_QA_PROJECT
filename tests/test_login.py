@@ -1,5 +1,6 @@
 import time
 
+from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 
 from pages.login_page import LoginPage
@@ -53,3 +54,16 @@ def test_empty_email_and_password(login_driver):
 
     # assertion
     lp.assert_incorrect_login_message("Please fill in all of the required fields")
+
+
+def test_login_using_enter_key(login_driver):
+    lp = LoginPage(login_driver)
+
+    # actions
+    lp.enter_login_email(env.hudl_email)
+    lp.enter_login_password(env.hudl_password)
+    lp.login_with_enter_key()
+
+    # assertion
+    expected_url = "https://www.hudl.com/home"
+    lp.assert_url(login_driver, expected_url)

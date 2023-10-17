@@ -1,4 +1,4 @@
-# Hudl_QA_TakeHome_Project
+# Hudl_QA_Project
 
 ----
  
@@ -19,6 +19,20 @@ Python (version 3.9)
 Selenium (version 4.14.0)
 
 Web browser driver for Google Chrome
+
+**Running Tests**
+
+The project employs various environment variables to conceal sensitive data. An `env.py` file can be found within the route page. 
+
+To ensure the project functions correctly, you'll need to provide your:
+
+- email
+
+- password
+
+Once inside the HUDL_QA_PROJECT folder, the following command can be used to run the tests.
+
+`pytest`
 
 -------
 

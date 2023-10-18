@@ -16,9 +16,9 @@ Before you begin, ensure you have the following prerequisites installed:
 
 Python (version 3.9)
 
-Selenium (version 4.14.0)
+Please install required dependencies using:
 
-Web browser driver for Google Chrome
+`pip3 install -r requirements.txt`
 
 **Running Tests**
 

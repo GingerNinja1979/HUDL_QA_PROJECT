@@ -1,3 +1,4 @@
+import self
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.wait import WebDriverWait
@@ -15,6 +16,8 @@ class LoginPage(BasePage):
     PASSWORD_INPUT = (By.ID, "password")
     CONTINUE_BUTTON = (By.ID, "logIn")
     ERROR_LOCATOR = (By.XPATH, '//p[@data-qa-id="undefined-text"]')
+    FORGOT_PASSWORD = (By.ID, "forgot-password")
+    EMAIL_RESET = (By.ID, "email-reset")
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -48,3 +51,19 @@ class LoginPage(BasePage):
 
     def login_with_enter_key(self):
         self.wait_for(self.CONTINUE_BUTTON).send_keys(Keys.RETURN)
+
+    def click_forgot_password(self):
+        self.wait_for(self.FORGOT_PASSWORD).click()
+
+    def assert_email_reset_button_visible(self, button_id, timeout=10):
+        """
+        Asserts that a button with the specified ID is visible on a web page.
+
+        :param button_id: The ID of the button to check for visibility.
+        :param timeout: Maximum time (in seconds) to wait for the button to become visible.
+        """
+        button_locator = self.EMAIL_RESET
+        element = WebDriverWait(self.driver, 10).until(
+            ec.visibility_of_element_located(button_locator)
+        )
+        assert element.is_displayed(), f"Button with ID {button_id} is not visible"

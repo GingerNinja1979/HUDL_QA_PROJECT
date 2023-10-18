@@ -41,13 +41,14 @@ Once inside the HUDL_QA_PROJECT folder, the following command can be used to run
 
 
 
-| Test Case             | Description                                                                  | Expected Outcome |
-|:----------------------|------------------------------------------------------------------------------|------------------|
-| Valid Login           | Test logging in with a valid username and password.                          |       Verify that the user is successfully logged in and redirected to the expected page           |
-| Invalid Login         | Attempt to login with an invalid username and a valid password               |       Verify that appropriate error messages are displayed in each case           |
-| Invalid Login         | Attempt to login with a valid username and an invalid password               |          Verify that appropriate error messages are displayed in each case        |
-| Blank Fields Handling | Attempt to login with both username and password fields left blank           |       Verify that an error message is displayed for each empty field                                                                            |
-| Using the Enter Key   | Attempt to login using the enter key instead of clicking the continue button |         Verify that the user is successfully logged in and redirected to the expected page                                                                                                                                        |
+| Test Case             | Description                                                                  | Expected Outcome                                                                   |
+|:----------------------|------------------------------------------------------------------------------|------------------------------------------------------------------------------------|
+| Valid Login           | Test logging in with a valid username and password.                          | Verify that the user is successfully logged in and redirected to the expected page |
+| Invalid Login         | Attempt to login with an invalid username and a valid password               | Verify that appropriate error messages are displayed in each case                  |
+| Invalid Login         | Attempt to login with a valid username and an invalid password               | Verify that appropriate error messages are displayed in each case                  |
+| Blank Fields Handling | Attempt to login with both username and password fields left blank           | Verify that an error message is displayed for each empty field                     |
+| Using the Enter Key   | Attempt to login using the enter key instead of clicking the continue button | Verify that the user is successfully logged in and redirected to the expected page |
+| Forgotten Password    | Attempt to login recovering the password                                     | Verify if the recover password page is showing                                     |
 
 -------
 
@@ -56,6 +57,5 @@ Once inside the HUDL_QA_PROJECT folder, the following command can be used to run
 - Cross browser testing - Only tested in Chrome
 - Performance Testing
 - Accessibility Testing
-- Forgot Password - Out of scope but probably something we could also test
 - Duplicated code - eg: self._wait.until and wait_for - In future i would like to avoid using duplicated code
 - Social login options & MFA are out of scope for this work

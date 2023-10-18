@@ -24,7 +24,7 @@ def test_incorrect_email(login_driver):
     lp = LoginPage(login_driver)
 
     # actions
-    lp.enter_login_email("test")
+    lp.enter_login_email("wrongemail@test.com")
     lp.enter_login_password(env.hudl_password)
     lp.click_continue_button()
 

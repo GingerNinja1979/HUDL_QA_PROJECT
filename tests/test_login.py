@@ -67,3 +67,13 @@ def test_login_using_enter_key(login_driver):
     # assertion
     expected_url = "https://www.hudl.com/home"
     lp.assert_url(login_driver, expected_url)
+
+
+def test_forgotten_password_link(login_driver):
+    lp = LoginPage(login_driver)
+
+    # actions
+    lp.click_forgot_password()
+
+    # assertion
+    lp.assert_email_reset_button_visible(button_id="EMAIL_RESET")

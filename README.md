@@ -58,3 +58,4 @@ Once inside the HUDL_QA_PROJECT folder, the following command can be used to run
 - Accessibility Testing
 - Forgot Password - Out of scope but probably something we could also test
 - Duplicated code - eg: self._wait.until and wait_for - In future i would like to avoid using duplicated code
+- Social login options & MFA are out of scope for this work

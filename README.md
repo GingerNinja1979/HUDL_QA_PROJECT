@@ -57,5 +57,5 @@ Once inside the HUDL_QA_PROJECT folder, the following command can be used to run
 - Cross browser testing - Only tested in Chrome
 - Performance Testing
 - Accessibility Testing
-- Duplicated code - eg: self._wait.until and wait_for - In future i would like to avoid using duplicated code
+- Duplicated code - eg: wait.until and webdriverwait - In future i would like to avoid using duplicated code and use only one implementation
 - Social login options & MFA are out of scope for this work

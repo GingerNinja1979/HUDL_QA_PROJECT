@@ -15,9 +15,10 @@ class LoginPage(BasePage):
     EMAIL_INPUT = (By.ID, "email")
     PASSWORD_INPUT = (By.ID, "password")
     CONTINUE_BUTTON = (By.ID, "logIn")
-    ERROR_LOCATOR = (By.XPATH, '//p[@data-qa-id="undefined-text"]')
     FORGOT_PASSWORD = (By.ID, "forgot-password")
     EMAIL_RESET = (By.ID, "email-reset")
+    ERROR_LOCATOR = (By.XPATH, '//p[@data-qa-id="undefined-text"]')
+    NAVBAR = (By.XPATH, '//nav[@data-qa-id="gloabl-navbar"]') # gloabl spelled wrong in dev code
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -31,6 +32,12 @@ class LoginPage(BasePage):
 
     def click_continue_button(self):
         self.wait_for(self.CONTINUE_BUTTON).click()
+
+    def login_with_enter_key(self):
+        self.wait_for(self.CONTINUE_BUTTON).send_keys(Keys.RETURN)
+
+    def click_forgot_password(self):
+        self.wait_for(self.FORGOT_PASSWORD).click()
 
     def assert_incorrect_login_message(self, value):
         """
@@ -49,21 +56,21 @@ class LoginPage(BasePage):
         except:
             assert False, f"Error message element not found: {self.ERROR_LOCATOR}"
 
-    def login_with_enter_key(self):
-        self.wait_for(self.CONTINUE_BUTTON).send_keys(Keys.RETURN)
+    def assert_navbar_displayed(self):
+        """
+        Asserts that the navigation bar is visible on a web page.
+        """
+        element = WebDriverWait(self.driver, 10).until(
+            ec.visibility_of_element_located(self.NAVBAR)
+        )
+        assert element.is_displayed(), "Navbar not visible"
 
-    def click_forgot_password(self):
-        self.wait_for(self.FORGOT_PASSWORD).click()
-
-    def assert_email_reset_button_visible(self, button_id, timeout=10):
+    def assert_email_reset_button_visible(self):
         """
         Asserts that a button with the specified ID is visible on a web page.
-
-        :param button_id: The ID of the button to check for visibility.
-        :param timeout: Maximum time (in seconds) to wait for the button to become visible.
         """
-        button_locator = self.EMAIL_RESET
         element = WebDriverWait(self.driver, 10).until(
-            ec.visibility_of_element_located(button_locator)
+            ec.visibility_of_element_located(self.EMAIL_RESET)
         )
-        assert element.is_displayed(), f"Button with ID {button_id} is not visible"
+        assert element.is_displayed(), "Email reset button not visible"
+

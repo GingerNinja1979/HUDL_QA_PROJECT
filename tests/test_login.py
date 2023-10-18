@@ -18,6 +18,7 @@ def test_successful_login(login_driver):
     # assertion
     expected_url = "https://www.hudl.com/home"
     lp.assert_url(login_driver, expected_url)
+    lp.assert_navbar_displayed()
 
 
 def test_incorrect_email(login_driver):
@@ -76,4 +77,4 @@ def test_forgotten_password_link(login_driver):
     lp.click_forgot_password()
 
     # assertion
-    lp.assert_email_reset_button_visible(button_id="EMAIL_RESET")
+    lp.assert_email_reset_button_visible()

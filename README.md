@@ -30,7 +30,7 @@ To ensure the project functions correctly, you'll need to provide your:
 
 - password
 
-Once inside the HUDL_QA_PROJECT folder, the following command can be used to run the tests.
+Once inside the HUDL_QA_PROJECT folder, the following command can be used to run all tests.
 
 `pytest`
 

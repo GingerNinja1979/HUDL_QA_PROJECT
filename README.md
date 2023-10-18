@@ -49,3 +49,13 @@ Once inside the HUDL_QA_PROJECT folder, the following command can be used to run
 | Invalid Login         | Attempt to login with both an invalid username and an invalid password       |    Verify that appropriate error messages are displayed in each case              |
 | Blank Fields Handling | Attempt to login with both username and password fields left blank           |       Verify that an error message is displayed for each empty field                                                                            |
 | Using the Enter Key   | Attempt to login using the enter key instead of clicking the continue button |         Verify that the user is successfully logged in and redirected to the expected page                                                                                                                                        |
+
+-------
+
+**Improvements and considerations**
+
+- Cross browser testing - Only tested in Chrome
+- Performance Testing
+- Accessibility Testing
+- Forgot Password - Out of scope but probably something we could also test
+- Duplicated code - eg: self._wait.until and wait_for - In future i would like to avoid using duplicated code
